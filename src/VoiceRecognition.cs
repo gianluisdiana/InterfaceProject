@@ -7,24 +7,32 @@ using UnityEngine;
 using UnityEngine.Windows.Speech; // KeywordRecognizer
 
 public class VoiceRecognition : MonoBehaviour {
+  // ------------------------------ Notifier ------------------------------ //
+
+  /// <summary>
+  /// Sends a regular message to the subscribers.
+  /// </summary>
+  public delegate void WordSaid();
+
+  /// <summary>
+  /// Events that will be triggered when a certain word was said.
+  /// </summary>
+  public event WordSaid OnJumpSaid;
+  public event WordSaid OnGrabSaid;
+  public event WordSaid OnThrowSaid;
+  public event WordSaid OnDropSaid;
+
+
+  // -------------------------- Voice Recognizer -------------------------- //
+
   /// <value> Used to recognize the words that are spoken</value>
   private KeywordRecognizer keywordRecognizer;
 
   /// <value> The words that will be recognized and it response.</value>
   private Dictionary<string, System.Action> actions = new Dictionary<string, System.Action>();
 
-  /// <value> The RigidBody component of the GameObject.</value>
-  private Rigidbody rb;
 
-  /// <value> The strength of the jump.</value>
-  public float jumpStrength = 5f;
-
-  /// <summary>
-  /// Adds a force in the 'Y' axis to make it jump.
-  /// </summary>
-  void Jump() {
-		rb.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-	}
+  // ------------------------------ Methods ------------------------------ //
 
   /// <summary>
   /// Called when a word is recognized.
@@ -39,7 +47,11 @@ public class VoiceRecognition : MonoBehaviour {
   /// Add the words that will be recognized and it response.
   /// </summary>
   private void SetUpRecognizer() {
-    this.actions.Add("jump", Jump);
+    this.actions.Add("jump", delegate () { OnJumpSaid(); });
+    this.actions.Add("grab", delegate () { OnGrabSaid(); });
+    this.actions.Add("throw", delegate () { OnThrowSaid(); });
+    this.actions.Add("drop", delegate () { OnDropSaid(); });
+
     // Create the keyword recognizer with the words established
     this.keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
 
@@ -49,7 +61,6 @@ public class VoiceRecognition : MonoBehaviour {
   }
 
   private void Start () {
-    this.rb = GetComponent<Rigidbody>();
     this.SetUpRecognizer();
   }
 }
