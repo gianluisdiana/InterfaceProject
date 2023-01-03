@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour {
+public class Movement : MonoBehaviour {
 
   /// <value>Property <c>tf</c> represents the <see cref="UnityEngine.CoreModule.Transform"> component.</value>
   private Transform tf;
