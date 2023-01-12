@@ -1,6 +1,6 @@
 # Proyecto final _Interfaces Inteligentes_.
 - Gian Luis Bolivar Diana. _gianluisbolivar1@gmail.com_
-- Marta Molina Fernández. _marta.introduce.tu@email.com_
+- Marta Molina Fernández. _alu0101603360@ull.edu.es_
 - Jorge Quintana García. _alu0101123547@ull.edu.es_
 
 ### Restricciones:
