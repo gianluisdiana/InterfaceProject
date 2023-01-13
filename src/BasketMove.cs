@@ -14,10 +14,9 @@ public class basket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        Vector3 pos_ini = new Vector3(-2, 0, 2);
-        Vector3 puntoB = new Vector3(pos_ini.x + 2, pos_ini.y, pos_ini.z);
-        Vector3 puntoA = new Vector3(pos_ini.x - 2, pos_ini.y, pos_ini.z);
+        Vector3 pos = transform.position; //Posición a tiempo real
+        Vector3 puntoA = new Vector3(-2, 0, 2); //Posición inicial
+        Vector3 puntoB = new Vector3(puntoA.x + 2, puntoA.y, puntoA.z); //Posición final
 
         if (izq)
         {
