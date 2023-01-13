@@ -13,6 +13,11 @@ public class PickUpScript : MonoBehaviour {
 
     private int LayerNumber; //layer index
 
+    public delegate void GrabState();
+
+    public event GrabState OnGrab;
+    public event GrabState OnNotGrab;
+
     // ------------------------------ Subscriber ------------------------------ //
     [Tooltip("The voice recognition script to subscribe to")]
     [SerializeField] private VoiceRecognition voiceNotifier;
@@ -33,6 +38,7 @@ public class PickUpScript : MonoBehaviour {
         heldObj.layer = LayerNumber; //change the object layer to the holdLayer
         //make sure object doesnt collide with player, it can cause weird bugs
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        OnGrab();
     }
 
     /// <summary>
@@ -80,6 +86,7 @@ public class PickUpScript : MonoBehaviour {
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; // Unparent object
         heldObj = null; // Undefine game object attached to heldObj
+        OnNotGrab();
     }
 
     /// <summary>
