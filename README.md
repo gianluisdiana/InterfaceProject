@@ -1,5 +1,5 @@
 # Proyecto final _Interfaces Inteligentes_.
-- Gian Luis Bolivar Diana. _gianluisbolivar1@gmail.com_
+- Gian Luis Bolivar Diana. _gian.diana.28@ull.edu.es_
 - Marta Molina Fernández. _alu0101603360@ull.edu.es_
 - Jorge Quintana García. _alu0101123547@ull.edu.es_
 
@@ -31,8 +31,10 @@ Actualmente tenemos implementado 3 comandos:
 
 ## Acta de los acuerdos del grupo respecto al trabajo en equipo: reparto de tareas, tareas desarrolladas individualmente, tareas desarrolladas en grupo, etc.
 
-- Desarollo de scripts:
+- Codificación de scripts:
   - `PickUp`: Jorge y Gian
   - `ReSpawnBox`: Gian
   - `SelectionManager`: Jorge
   - `VoiceRecognition`: Gian
+
+- Desarrollo de escenas: Grupal
