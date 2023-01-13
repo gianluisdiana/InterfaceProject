@@ -19,6 +19,6 @@ public class ReSpawnBox : MonoBehaviour {
   /// If the box collides with the death zone, re-spawn it.
   /// </summary>
   private void OnCollisionEnter (Collision collision) {
-    if (collision.gameObject.name == "DeathZone") ReSpawn();
+    if (collision.gameObject.tag == "DeathZone") ReSpawn();
   }
 }
