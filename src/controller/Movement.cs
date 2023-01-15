@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour {
 
 
   /// <summary>
-  /// Moves itself in the XZ plane.
+    /// Moves itself in the XZ plane.
   /// </summary>
   private void Move() {
     float z_movement = Input.GetAxis("Vertical") * Time.deltaTime * speed;
@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour {
   }
 
   /// <summary>
-  /// Moves the object normally with the arrow keys
+    /// Moves the object normally with the arrow keys
   /// </summary>
   void Update() {
     Move();

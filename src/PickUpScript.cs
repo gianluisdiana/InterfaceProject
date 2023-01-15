@@ -3,27 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PickUpScript : MonoBehaviour {
-    public GameObject player;
-    public Transform holdPos;
-    public float throwForce = 500f; //force at which the object is thrown at
-    public float pickUpRange = 5f; //how far the player can pickup the object from
+    // ------------------------- Serialized values ------------------------- //
 
-    private GameObject heldObj; //object which we pick up
-    private Rigidbody heldObjRb; //rigidbody of object we pick up
+    [Tooltip("The player object")]
+    [SerializeField] private GameObject player;
 
-    private int LayerNumber; //layer index
+    [Tooltip("The position where the object will be held")]
+    [SerializeField] private Transform holdPosition;
 
-    public delegate void GrabState();
+    [Tooltip("How much force is applied to the object when thrown")]
+    [SerializeField] private float throwForce = 500f;
 
-    public event GrabState OnGrab;
-    public event GrabState OnNotGrab;
+    [Tooltip("How far the player can pickup the object from")]
+    [SerializeField] public float pickUpRange = 5f;
+
+    // ------------------------- Private attributes ------------------------- //
+
+    private GameObject heldObj;  // Object which we pick up
+    private Rigidbody heldObjRb; // Rigidbody of object we pick up
+
+    private int LayerNumber;     // Layer index
+
+    // ------------------------------ Notifier ------------------------------ //
+
+    /// <summary>
+        /// Type of message to send to the subscribers.
+    /// </summary>
+    public delegate void ObjectState();
+
+    /// <summary>
+        /// Events that will be triggered when the object is grabbed or dropped.
+    /// </summary>
+    public event ObjectState OnGrab;
+    public event ObjectState OnNotGrab;
 
     // ------------------------------ Subscriber ------------------------------ //
-    [Tooltip("The voice recognition script to subscribe to")]
-    [SerializeField] private VoiceRecognition voiceNotifier;
 
+    [Tooltip("The user interactions script to subscribe to")]
+    [SerializeField] private Interactions userNotifier;
 
     // --------------------------- Private Methods --------------------------- //
+
+# region Interactions with the object
 
     /// <summary>
         /// Pick up an object and lock it to the player
@@ -34,8 +55,8 @@ public class PickUpScript : MonoBehaviour {
         heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
         heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
         heldObjRb.isKinematic = true;
-        heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
-        heldObj.layer = LayerNumber; //change the object layer to the holdLayer
+        heldObjRb.transform.parent = holdPosition.transform; //parent object to hold position
+        heldObj.layer = LayerNumber + 1; //change the object layer to the holdLayer
         //make sure object doesnt collide with player, it can cause weird bugs
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         OnGrab();
@@ -60,7 +81,7 @@ public class PickUpScript : MonoBehaviour {
         /// Only called when dropping / throwing.
     /// </summary>
     private void StopClipping() {
-        var clipRange = Vector3.Distance(heldObj.transform.position, transform.position); // Distance from holdPos to the camera
+        var clipRange = Vector3.Distance(heldObj.transform.position, transform.position); // Distance from "holdPosition" to the camera
         //have to use RaycastAll as object blocks raycast in center screen
         //RaycastAll returns array of all colliders hit within the cliprange
         RaycastHit[] hits;
@@ -103,18 +124,20 @@ public class PickUpScript : MonoBehaviour {
         /// Keep the object position the same as the holdPosition position
     /// </summary>
     private void MoveObject () {
-        heldObj.transform.position = holdPos.transform.position;
+        heldObj.transform.position = holdPosition.transform.position;
     }
+
+# endregion
 
     private void Start () {
         LayerNumber = LayerMask.NameToLayer("holdLayer");
-        voiceNotifier.OnGrabSaid += TryToPickUpObject;
-        voiceNotifier.OnDropSaid += DropObject;
-        voiceNotifier.OnThrowSaid += ThrowObject;
+        userNotifier.OnGPressed += TryToPickUpObject;
+        userNotifier.OnDPressed += DropObject;
+        userNotifier.OnTPressed += ThrowObject;
     }
 
     private void Update() {
         if (heldObj == null) return;
-        MoveObject(); // Keep the object position at 'holdPos'
+        MoveObject(); // Keep the object position at 'holdPosition'
     }
 }

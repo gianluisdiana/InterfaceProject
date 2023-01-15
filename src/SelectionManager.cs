@@ -13,14 +13,13 @@ public class SelectionManager : MonoBehaviour {
 
     private bool _grabed;
     private Transform _selection;
-    public float pickUpRange = 15f;
 
     private void Start() {
         _grabed = false;
         notifier.OnGrab += objectGrabed;
         notifier.OnNotGrab += objectNotGrabed;
     }
-    
+
     private void Update() {
         if (_selection != null) {
             var selectionRenderer = _selection.GetComponent<Renderer>();
@@ -32,9 +31,9 @@ public class SelectionManager : MonoBehaviour {
             }
             _selection = null;
         }
-        
+
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward), out hit, pickUpRange)) {
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward), out hit, notifier.pickUpRange)) {
             var selection = hit.transform;
             if (selection.CompareTag("canPickUp")) {
                 var selectionRenderer = selection.GetComponent<Renderer>();

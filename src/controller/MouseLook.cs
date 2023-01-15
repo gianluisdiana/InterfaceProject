@@ -36,7 +36,7 @@ public class MouseLook : MonoBehaviour {
   // --------------------- Private methods --------------------- //
 
   /// <summary>
-  /// Clamps the vertical angle to the maximum angle from the horizon.
+    /// Clamps the vertical angle to the maximum angle from the horizon.
   /// </summary>
   /// <param name="angle">The angle to clamp, in degrees</param>
   /// <returns>The clamped angle, in degrees</returns>
@@ -45,7 +45,7 @@ public class MouseLook : MonoBehaviour {
   }
 
   /// <summary>
-  /// Gets the mouse position in the X and Y axes.
+    /// Gets the mouse position in the X and Y axes.
   /// </summary>
   /// <returns>The mouse input.</returns>
   private Vector2 GetMouseInput() {
