@@ -35,7 +35,7 @@ public class PickUpScript : MonoBehaviour {
         /// Events that will be triggered when the object is grabbed or dropped.
     /// </summary>
     public event ObjectState OnGrab;
-    public event ObjectState OnNotGrab;
+    public event ObjectState OnDrop;
 
     // ------------------------------ Subscriber ------------------------------ //
 
@@ -52,7 +52,7 @@ public class PickUpScript : MonoBehaviour {
     private void PickUpObject (GameObject pickUpObj) {
         if (!(pickUpObj.GetComponent<Rigidbody>())) return; // Make sure the object has a RigidBody
 
-        heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
+        heldObj = pickUpObj; //assign heldObj to the object that was hit by the ray-cast (no longer == null)
         heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
         heldObjRb.isKinematic = true;
         heldObjRb.transform.parent = holdPosition.transform; //parent object to hold position
@@ -82,8 +82,8 @@ public class PickUpScript : MonoBehaviour {
     /// </summary>
     private void StopClipping() {
         var clipRange = Vector3.Distance(heldObj.transform.position, transform.position); // Distance from "holdPosition" to the camera
-        //have to use RaycastAll as object blocks raycast in center screen
-        //RaycastAll returns array of all colliders hit within the cliprange
+        //have to use RaycastAll as object blocks ray-cast in center screen
+        //RaycastAll returns array of all colliders hit within the clip-range
         RaycastHit[] hits;
         hits = Physics.RaycastAll(transform.position, transform.TransformDirection(Vector3.forward), clipRange);
         //if the array length is greater than 1, meaning it has hit more than just the object we are carrying
@@ -107,7 +107,7 @@ public class PickUpScript : MonoBehaviour {
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; // Unparent object
         heldObj = null; // Undefine game object attached to heldObj
-        OnNotGrab();
+        OnDrop();
     }
 
     /// <summary>
