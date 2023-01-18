@@ -76,13 +76,13 @@ public class DisplayHelp : MonoBehaviour {
   }
 
   private void summonText() {
-    while (this.commonHelpText.text.color.a != 1)
-      this.commonHelpText.color.a += 0.05;
+    while (this.commonHelpText.alpha != 255)
+      this.commonHelpText.alpha += 5;
   }
 
   private void disappearText() {
-    while (this.commonHelpText.text.color.a != 0)
-      this.commonHelpText.color.a -= 0.05;
+    while (this.commonHelpText.alpha != 0)
+      this.commonHelpText.alpha -= 5;
   }
 
   private void displayPick() {
@@ -98,6 +98,6 @@ public class DisplayHelp : MonoBehaviour {
     this.pickNotifier.OnGrab += displayDropThrow;
 
     // Start the text on a transparency state
-    this.commonHelpText.color.a = 0;
+    this.commonHelpText.alpha = 0;
   }
 }
