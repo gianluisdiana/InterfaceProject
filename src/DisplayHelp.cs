@@ -47,11 +47,8 @@ public class DisplayHelp : MonoBehaviour {
     while (this.commonHelpText.text != "") yield return new WaitForSeconds(0.5f);
 
     this.commonHelpText.text = this.pickHelp;
-    this.summonText();
-
     // Keep the text 5 seconds
     yield return new WaitForSeconds(5f);
-    this.disappearText();
     this.commonHelpText.text = "";
   }
 
@@ -67,22 +64,9 @@ public class DisplayHelp : MonoBehaviour {
     while (this.commonHelpText.text != "") yield return new WaitForSeconds(0.5f);
 
     this.commonHelpText.text = this.dropHelp + "\n" + this.throwHelp;
-    this.summonText();
-
     // Keep the text 5 seconds
     yield return new WaitForSeconds(5f);
-    this.disappearText();
     this.commonHelpText.text = "";
-  }
-
-  private void summonText() {
-    while (this.commonHelpText.alpha != 255)
-      this.commonHelpText.alpha += 5;
-  }
-
-  private void disappearText() {
-    while (this.commonHelpText.alpha != 0)
-      this.commonHelpText.alpha -= 5;
   }
 
   private void displayPick() {
