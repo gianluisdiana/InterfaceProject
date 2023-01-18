@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic; // Dictionary
 using UnityEngine;
 using TMPro; // TMP_Text
@@ -37,9 +38,9 @@ public class DisplayHelp : MonoBehaviour {
   /// <summary>
     /// Display help the first time the user points to a pick-able object.
   /// </summary>
-  private void displayPickHelp() {
+  IEnumerator displayPickHelp() {
     // Only display it once
-    if (this.pickHelpAlreadyDisplayed) return;
+    if (this.pickHelpAlreadyDisplayed) yield break;
 
     this.pickHelpAlreadyDisplayed = true;
     // If there's any text, wait till it disappears
@@ -54,9 +55,9 @@ public class DisplayHelp : MonoBehaviour {
   /// <summary>
     /// Display help the first time the user is holding an object.
   /// </summary>
-  private void displayDropThrowHelp() {
+  IEnumerator displayDropThrowHelp() {
     // Only display it once
-    if (this.dropThrowHelpAlreadyDisplayed) return;
+    if (this.dropThrowHelpAlreadyDisplayed) yield break;
 
     this.dropThrowHelpAlreadyDisplayed = true;
     // If there's any text, wait till it disappears
@@ -68,8 +69,16 @@ public class DisplayHelp : MonoBehaviour {
     this.commonHelpText.text = "";
   }
 
+  private void displayPick() {
+    StartCoroutine(displayPickHelp());
+  }
+
+  private void displayDropThrow() {
+    StartCoroutine(displayDropThrowHelp());
+  }
+
   private void Start() {
-    this.selectionNotifier.OnHighlight += displayPickHelp;
-    this.pickNotifier.OnGrab += displayDropThrowHelp;
+    this.selectionNotifier.OnHighlight += displayPick;
+    this.pickNotifier.OnGrab += displayDropThrow;
   }
 }

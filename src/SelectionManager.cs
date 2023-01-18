@@ -15,6 +15,16 @@ public class SelectionManager : MonoBehaviour {
     [Tooltip("The script that will notify when an object is grabbed.")]
     [SerializeField] private PickUpScript notifier;
 
+    /// <summary>
+        /// 
+    /// </summary>
+    public delegate void HighlightState();
+
+    /// <summary>
+        /// Events that will be triggered when the object is grabbed or dropped.
+    /// </summary>
+    public event HighlightState OnHighlight;
+
     // ------------------------- Private attributes ------------------------- //
 
     /// <value> Whether an object is currently <c>grabbed</c>. </value>
@@ -75,6 +85,7 @@ public class SelectionManager : MonoBehaviour {
         if ((selectedRenderer == null) || (grabbed)) return;
 
         selectedRenderer.material = GetMaterial(newObjectInVision.name, true);
+        OnHighlight();
         objectInVision = newObjectInVision;
     }
 }
