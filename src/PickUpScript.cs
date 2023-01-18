@@ -56,7 +56,7 @@ public class PickUpScript : MonoBehaviour {
         heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
         heldObjRb.isKinematic = true;
         heldObjRb.transform.parent = holdPosition.transform; //parent object to hold position
-        heldObj.layer = LayerNumber + 1; //change the object layer to the holdLayer
+        heldObj.layer = LayerNumber; //change the object layer to the holdLayer
         //make sure object doesnt collide with player, it can cause weird bugs
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         OnGrab();
