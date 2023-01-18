@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // SceneManager.GetActiveScene()
 
 [System.Serializable] public struct Materials {
     public string name;
@@ -85,7 +86,9 @@ public class SelectionManager : MonoBehaviour {
         if ((selectedRenderer == null) || (grabbed)) return;
 
         selectedRenderer.material = GetMaterial(newObjectInVision.name, true);
-        OnHighlight();
+
+        // Only send the event in the first level
+        if (SceneManager.GetActiveScene().name == "Level_0") OnHighlight();
         objectInVision = newObjectInVision;
     }
 }
