@@ -5,39 +5,39 @@ using UnityEngine;
 public class Platform_Move : MonoBehaviour {
     // ------------------------- Serialized values ------------------------- //
 
-    [Tooltip("")]
+    [Tooltip("Platform")]
     [SerializeField] private Transform parent;
 
-    [Tooltip("")]
+    [Tooltip("Box")]
     [SerializeField] private Transform oldParent;
 
     // ------------------------- Private attributes ------------------------- //
 
-    /// <value>  </value>
+    /// <value> To check if the platform has to be moved to forward or not.  </value>
     private bool goForward;
 
-    /// <value>  </value>
+    /// <value> To check if the platform has to be moved to the left or not. </value>
     private bool goLeft;
 
-    /// <value>  </value>
+    /// <value> To check if the platform has reached it's final position. </value>
     private bool finalPos;
 
-    /// <value>  </value>
+    /// <value> Get the box object </value>
     private GameObject box;
 
-    /// <value>  </value>
+    /// <value> Inicial position of the platform </value>
     private Vector3 initialPosition;
 
-    /// <value>  </value>
+    /// <value> Position of the platform once it has gone forward </value>
     private Vector3 frontPosition;
 
-    /// <value>  </value>
+    /// <value> Last position of the platform (after going left) </value>
     private Vector3 finalPosition;
 
     // ---------------------------- Private Method --------------------------- //
 
     /// <summary>
-        ///
+        /// Code of the movement of the platform. First it goes forward, then left till the final position.
     /// </summary>
     void move() {
         Vector3 currentPosition = transform.position;
@@ -66,7 +66,7 @@ public class Platform_Move : MonoBehaviour {
     // ----------------------------- Unity methods ----------------------------- //
 
     /// <summary>
-        ///
+        /// Initialises the private attributes
     /// </summary>
     void Start() {
         goForward = true;
@@ -80,7 +80,7 @@ public class Platform_Move : MonoBehaviour {
     }
 
     /// <summary>
-        ///
+        /// While the object stills colliding, the platform moves.
     /// </summary>
     /// <param name="collision"> The object that collided with. </param>
     void OnCollisionStay(Collision collision) {
@@ -90,7 +90,7 @@ public class Platform_Move : MonoBehaviour {
     }
 
     /// <summary>
-        ///
+        /// If the object is not longer colliding, the platform goes to its inicial position.
     /// </summary>
     void OnCollisionExit() {
         box.transform.SetParent(oldParent);
