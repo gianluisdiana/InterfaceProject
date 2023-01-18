@@ -21,19 +21,64 @@ Actualmente tenemos implementado 3 comandos:
   - Altura máxima de paredes: 4
 
 ### Niveles implementados:
-- Básicos:
-  1. Cubo y canasta en el piso.
-  2. Cubo en el piso y canasta elevada (se necesita hacer `JUMP` + `THROW`).
-  3. Cubo en el piso y canasta en movimiento + elevada.
-
+1. Sencillo, con la canasta y el cubo en el piso (estáticos) y enseña a como usar la aplicación.
+2. La canasta sigue siendo estática pero ahora el cubo está en una plataforma que se eleva y baja.
+3. Tanto la canasta como el cubo son estáticos. Canasta considerablemente elevada.
+4. La canasta se mueve de lado a lado, de forma solo es visible cuando esta a la derecha, la plataforma del cub es estática.
+5. Canasta y cubo estáticos. Hay una pared (entre el usuario y la canasta) que se puede demoler con unas esferas dispuestas al costado del usuario.
 
 ## Gif animado de ejecución.
+
+### Gif de cada nivel
+<details>
+  <summary> Nivel <c>1</c> </summary>
+
+  ![Level1](./img/level_1.png)
+</details>
+<details>
+  <summary> Nivel <c>2</c> </summary>
+
+  ![Level2](./img/level_2.png)
+</details>
+<details>
+  <summary> Nivel <c>3</c> </summary>
+
+  ![Level3](./img/level_3.png)
+</details>
+<details>
+  <summary> Nivel <c>4</c> </summary>
+
+  ![Level4](./img/level_4.png)
+</details>
+<details>
+  <summary> Nivel <c>5</c> </summary>
+
+  ![Level4](./img/level_5.png)
+</details>
+
+
+### Ayuda mostrada en el primer nivel.
+
+![HelpDisplayed](./img/help_displayed.png)
+
+### Seguimiento de farola a canasta
+
+![LightFollow](./img/light_follow.png)
 
 ## Acta de los acuerdos del grupo respecto al trabajo en equipo: reparto de tareas, tareas desarrolladas individualmente, tareas desarrolladas en grupo, etc.
 
 - Codificación de scripts:
-  - `PickUp`: Jorge y Gian
-  - `ReSpawnBox`: Gian
+  - `BasketMove`: Marta y Gian
+  - `Box_Vertical`: Marta y Gian
+  - `DisplayHelp`: Gian
+  - `GameManager`: Jorge
+  - `Interactions`: Gian
+  - `LightFollowBasket`: Jorge
+  - `PickUpScript`: Jorge y Gian
+  - `Platform_Move`: Marta
+  - `ReSpawnBox`: Gian y Jorge
   - `SelectionManager`: Jorge
+  - `WinDetection`: Jorge
 
-- Desarrollo de escenas: Grupal
+- Desarrollo de escenas: Grupal (Marta y Jorge en general)
+- Búsqueda y ideas y assets: Grupal (Marta y Jorge en general)
