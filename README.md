@@ -4,7 +4,7 @@
 - Jorge Quintana García. _alu0101123547@ull.edu.es_
 
 ## Cuestiones importantes para el uso.
-La aplicación funciona con comandos de voz, de forma que para interaccionar con los objetos tenemos que decir el comando.
+La aplicación funciona con un mando (conectado al dispositivo via Bluetooth) de forma que para interaccionar con los objetos pulsar el botón correspondiente.
 
 Actualmente tenemos implementado 3 comandos:
 - `GRAB`: Nos permite agarrar algunos objetos (se iluminan los disponibles).
@@ -35,6 +35,5 @@ Actualmente tenemos implementado 3 comandos:
   - `PickUp`: Jorge y Gian
   - `ReSpawnBox`: Gian
   - `SelectionManager`: Jorge
-  - `VoiceRecognition`: Gian
 
 - Desarrollo de escenas: Grupal
