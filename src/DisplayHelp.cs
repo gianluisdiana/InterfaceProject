@@ -80,8 +80,5 @@ public class DisplayHelp : MonoBehaviour {
   private void Start() {
     this.selectionNotifier.OnHighlight += displayPick;
     this.pickNotifier.OnGrab += displayDropThrow;
-
-    // Start the text on a transparency state
-    this.commonHelpText.alpha = 0;
   }
 }
