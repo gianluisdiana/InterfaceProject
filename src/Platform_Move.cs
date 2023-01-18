@@ -13,13 +13,13 @@ public class Platform_Move : MonoBehaviour {
 
     // ------------------------- Private attributes ------------------------- //
 
-    /// <value> To check if the platform has to be moved to forward or not.  </value>
+    /// <value> To check if the platform has to be moved forward or not.  </value>
     private bool goForward;
 
     /// <value> To check if the platform has to be moved to the left or not. </value>
     private bool goLeft;
 
-    /// <value> To check if the platform has reached it's final position. </value>
+    /// <value> To check if the platform has reached its final position. </value>
     private bool finalPos;
 
     /// <value> Get the box object </value>
