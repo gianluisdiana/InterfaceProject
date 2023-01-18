@@ -3,31 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BasketMove : MonoBehaviour {
-    private bool goToLeft;
+    // ------------------------- Private attributes ------------------------- //
 
-    // Start is called before the first frame update
-    void Start() {
-        goToLeft = true;
+    /// <value> To check if the basket has to be moved to the right or not. </value>
+    private bool goRight;
+
+    /// <value> Starting position of the basket. </value>
+    private Vector3 _leftEdgePosition;
+
+    /// <value> Farthest position where the basket can reach. </value>
+    private Vector3 _rightEdgePosition;
+
+    /// <value> The speed of the basket. </value>
+    private float basketSpeed;
+
+    // ----------------------------- Private Method ---------------------------- //
+
+    /// <summary>
+        /// Check if the given position is between the edges.
+    /// </summary>
+    /// <param name="xPosition"> The position to evaluate. </param>
+    /// <returns>If the position is in x range. </returns>
+    private bool isInXRange(float xPosition) {
+        return (xPosition > _leftEdgePosition.x) && (xPosition < _rightEdgePosition.x);
     }
 
-    // Update is called once per frame
-    void Update() {
-        Vector3 currentPosition = transform.position; //Posición a tiempo real
-        Vector3 initialPosition = new Vector3(-3, 0, 2); // Posición inicial
-        Vector3 finalPosition = new Vector3(initialPosition.x + 4, initialPosition.y, initialPosition.z); //Posición final
+    // ----------------------------- Unity methods ----------------------------- //
 
-        if (goToLeft) {
-            if (currentPosition.x < finalPosition.x) {
-                transform.Translate(Vector3.right * 0.003f);
-            } else {
-                goToLeft = false;
-            }
-        } else {
-            if (currentPosition.x > initialPosition.x) {
-                transform.Translate(Vector3.left * 0.003f);
-            } else {
-                goToLeft = true;
-            }
-        }
+    /// <summary>
+        /// Set the edges positions and the speed of the basket.
+    /// </summary>
+    private void Start() {
+        goRight = true;
+        _leftEdgePosition = new Vector3(-3.5f, 0, 2);
+        _rightEdgePosition = new Vector3(_leftEdgePosition.x + 4, _leftEdgePosition.y, _leftEdgePosition.z);
+        basketSpeed = 0.003f;
+    }
+
+    /// <summary>
+        /// Keep the basket moving side by side.
+    /// </summary>
+    void Update() {
+        float currentXPosition = transform.position.x;
+
+        if (!isInXRange(currentXPosition)) goRight = !goRight;
+
+        float finalSpeed = basketSpeed * (goRight ? 1 : -1);
+        transform.Translate(Vector3.right * finalSpeed);
     }
 }

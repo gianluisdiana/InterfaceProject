@@ -82,8 +82,8 @@ public class PickUpScript : MonoBehaviour {
     /// </summary>
     private void StopClipping() {
         var clipRange = Vector3.Distance(heldObj.transform.position, transform.position); // Distance from "holdPosition" to the camera
-        //have to use RaycastAll as object blocks raycast in center screen
-        //RaycastAll returns array of all colliders hit within the cliprange
+        //have to use RaycastAll as object blocks ray-cast in center screen
+        //RaycastAll returns array of all colliders hit within the clip-range
         RaycastHit[] hits;
         hits = Physics.RaycastAll(transform.position, transform.TransformDirection(Vector3.forward), clipRange);
         //if the array length is greater than 1, meaning it has hit more than just the object we are carrying
@@ -105,7 +105,7 @@ public class PickUpScript : MonoBehaviour {
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0; // Object assigned back to default layer
         heldObjRb.isKinematic = false;
-        heldObj.transform.parent = null; // Unparent object
+        heldObj.transform.parent = null; // Un-parent object
         heldObj = null; // Undefine game object attached to heldObj
         OnDrop();
     }
@@ -116,12 +116,8 @@ public class PickUpScript : MonoBehaviour {
     private void ThrowObject() {
         if (heldObj == null) return;
 
-        float actualThrowForce;
-        if (heldObj.name == "Ball")  {
-            actualThrowForce = throwForce * 1.5f;
-        } else {
-            actualThrowForce = throwForce;
-        }
+        float actualThrowForce = throwForce;
+        actualThrowForce *= (heldObj.name == "Ball" ? 1.5f : 1);
 
         DropObject();
         heldObjRb.AddForce(transform.forward * actualThrowForce);
@@ -136,6 +132,11 @@ public class PickUpScript : MonoBehaviour {
 
 # endregion
 
+    // ---------------------------- Unity methods ---------------------------- //
+
+    /// <summary>
+        /// Set the functions to be called when a certain button is pressed.
+    /// </summary>
     private void Start () {
         LayerNumber = LayerMask.NameToLayer("holdLayer");
         userNotifier.OnGPressed += TryToPickUpObject;
@@ -143,6 +144,9 @@ public class PickUpScript : MonoBehaviour {
         userNotifier.OnTPressed += ThrowObject;
     }
 
+    /// <summary>
+        /// If the user is holding an object, keep moving it with that user.
+    /// </summary>
     private void Update() {
         if (heldObj == null) return;
         MoveObject(); // Keep the object position at 'holdPosition'

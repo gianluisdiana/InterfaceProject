@@ -1,6 +1,8 @@
 using UnityEngine;
 
 public class Interactions : MonoBehaviour {
+    // ------------------------------ Notifier ------------------------------ //
+
     /// <summary>
         /// Sends a regular message to the subscribers when presses a certain button.
     /// </summary>
@@ -13,6 +15,8 @@ public class Interactions : MonoBehaviour {
     public event ButtonPressed OnDPressed;
     public event ButtonPressed OnTPressed;
     public event ButtonPressed OnSpaceBarPressed;
+
+    // --------------------------- Unity methods --------------------------- //
 
     /// <summary>
         /// Checks if any of the buttons was pressed.

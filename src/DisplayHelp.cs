@@ -77,6 +77,11 @@ public class DisplayHelp : MonoBehaviour {
     StartCoroutine(displayDropThrowHelp());
   }
 
+  // ----------------------------- Unity methods ----------------------------- //
+
+  /// <summary>
+    /// Set the functions to be called when an object is grabbed / highlight.
+  /// </summary>
   private void Start() {
     this.selectionNotifier.OnHighlight += displayPick;
     this.pickNotifier.OnGrab += displayDropThrow;

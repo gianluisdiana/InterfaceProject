@@ -13,16 +13,20 @@ public class SelectionManager : MonoBehaviour {
     [Tooltip("The materials that will be used to highlight the objects.")]
     [SerializeField] private Materials[] materials;
 
+    // ----------------------------- Subscriber ----------------------------- //
+
     [Tooltip("The script that will notify when an object is grabbed.")]
     [SerializeField] private PickUpScript notifier;
 
+    // ------------------------------ Notifier ------------------------------ //
+
     /// <summary>
-        /// 
+        /// Sends a regular message to the subscribers when an object material is changed.
     /// </summary>
     public delegate void HighlightState();
 
     /// <summary>
-        /// Events that will be triggered when the object is grabbed or dropped.
+        /// Events that will be triggered when an object is highlighted.
     /// </summary>
     public event HighlightState OnHighlight;
 
@@ -36,18 +40,18 @@ public class SelectionManager : MonoBehaviour {
 
     // --------------------------- Private methods --------------------------- //
 
+    /// <summary>
+        /// Set the object state 'grabbed' to true.
+    /// </summary>
     private void objectGrabbed() {
         grabbed = true;
     }
 
+    /// <summary>
+        /// Set the object state 'grabbed' to false.
+    /// </summary>
     private void objectNotGrabbed() {
         grabbed = false;
-    }
-
-    private void Start() {
-        grabbed = false;
-        notifier.OnGrab += objectGrabbed;
-        notifier.OnDrop += objectNotGrabbed;
     }
 
     /// <summary>
@@ -64,6 +68,8 @@ public class SelectionManager : MonoBehaviour {
         }
         return null;
     }
+
+    // ----------------------------- Unity methods ----------------------------- //
 
     private void Update() {
         if (objectInVision != null) {
@@ -88,5 +94,14 @@ public class SelectionManager : MonoBehaviour {
         selectedRenderer.material = GetMaterial(newObjectInVision.name, true);
         if (SceneManager.GetActiveScene().name == "Level_0") OnHighlight();
         objectInVision = newObjectInVision;
+    }
+
+    /// <summary>
+        /// Set the functions to be called when an object is grabbed / dropped.
+    /// </summary>
+    private void Start() {
+        grabbed = false;
+        notifier.OnGrab += objectGrabbed;
+        notifier.OnDrop += objectNotGrabbed;
     }
 }
