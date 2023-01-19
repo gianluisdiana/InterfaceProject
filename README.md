@@ -65,7 +65,7 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
   
   Observamos la forma de demoler la pared:
   
-  ![Level5_pared](./img/level_5_pared.gif)
+  ![Level5_1](https://user-images.githubusercontent.com/72491269/213373333-49d7897c-de18-4ae9-b993-bbf8a2fe581b.gif)
   
   Y completamos el nivel:
 
