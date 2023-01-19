@@ -89,15 +89,11 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
 
 ### Ayuda mostrada en el primer nivel.
 
-![HelpDisplayed](./img/help_displayed.gif)
+![Captura1](https://user-images.githubusercontent.com/72491269/213374251-f9993727-14c5-4fa7-88e7-54e9530aec26.PNG)
 
 ### Seguimiento de farola a canasta
 
-![LightFollow](./img/light_follow.gif)
-
-### Transición entre niveles
-
-![LevelTransactions](./img/level_transactions.gif)
+![Level4_Luz](https://user-images.githubusercontent.com/72491269/213374353-39d15f01-0973-4af8-bb06-f9a4b0c9f8b7.gif)
 
 ## Acta de los acuerdos del grupo respecto al trabajo en equipo: reparto de tareas, tareas desarrolladas individualmente, tareas desarrolladas en grupo, etc.
 
