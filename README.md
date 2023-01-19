@@ -16,7 +16,7 @@ Actualmente tenemos implementado 3 comandos:
 ## Hitos de programación logrados relacionándolos con los contenidos que se han impartido.
 Hemos utilizado una gran variedad de scripts en la realización de este proyecto. Empezando por los contenidos más básicos movemos objetos de la escena, tanto con el uso de fuerza (cuando los objetos tienen `Rigidbody`), como haciendo 'mini tele-transportes', modificando sus coordenadas directas; modificamos de forma dinámica el material de objetos (ilustrando cuales objetos se pueden agarrar). Destruimos objetos cuando están en zonas indeseables. De los tópicos más complicados de entender (no tanto por su complejidad, sino por su abstracción), los 'notifiers' y 'subscribers' fueron implementados reiteradamente según se vió oportuno.
 
-Fuera de los contenidos de la asignatura, nos parece relevante destacar el uso de funcionalidades ofrecidas por _Unity_, tales como `SceneManagement`, `Tooltip`, `SerializeField`, llamadas a co-rutinas para ejecutar varias funciones a la vez.
+Fuera de los contenidos de la asignatura, nos parece relevante destacar el uso de funcionalidades ofrecidas por _Unity_, tales como `SceneManagement`, `Tooltip`, `SerializeField`, `RequireComponent` y llamadas a co-rutinas para ejecutar varias funciones a la vez.
 
 ## Aspectos que destacarías en la aplicación. Especificar si se han incluido sensores de los que se han trabajado en interfaces multi-modales.
 
@@ -30,34 +30,45 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
 3. Tanto la canasta como el cubo son estáticos. Canasta considerablemente elevada.
 4. La canasta se mueve de lado a lado, de forma solo es visible cuando esta a la derecha, la plataforma del cub es estática.
 5. Canasta y cubo estáticos. Hay una pared (entre el usuario y la canasta) que se puede demoler con unas esferas dispuestas al costado del usuario.
+6. 
 
 ## Gif animado de ejecución.
 
 ### Gif de cada nivel
 <details>
   <summary> Nivel <c>1</c> </summary>
+  Puesto que es el primer nivel, también es el más básico de todos. El objetivo del mismo es que el usuario se familiarice con los objetos de la escena y como puede interactuar con ellos.
 
   ![Level1](./img/level_1.png)
 </details>
 <details>
   <summary> Nivel <c>2</c> </summary>
+  El siguiente nivel tiene un poco más de dificultad, puesto que la caja se encuentra en una plataforma movible que se eleva y se baja. Se busca incrementar en pequeñas medidas cada nivel, y la primera aproximación es esta.
 
   ![Level2](./img/level_2.png)
 </details>
 <details>
   <summary> Nivel <c>3</c> </summary>
+  Este en particular es para que el usuario practique su lanzamiento, puesto que la plataforma donde se sitúa la canasta esta en un piso mas elevado que el usuario.
 
   ![Level3](./img/level_3.png)
 </details>
 <details>
   <summary> Nivel <c>4</c> </summary>
+  En este nivel jugamos con la posición de la canasta, de manera que en ciertos puntos es visible y en otros no. En todo momento el usuario tiene la capacidad de encestar la caja, pero es mucho mas fácil cuando se tiene visión de la canasta
 
   ![Level4](./img/level_4.png)
 </details>
 <details>
   <summary> Nivel <c>5</c> </summary>
+  Aquí introducimos una mecánica nueva: la pared endeble. Se nos dispone de proyectiles (aparte de la caja en si) para lanzar a esta pared demoliéndola gradualmente, y asi tener visión de la canasta.
 
-  ![Level4](./img/level_5.png)
+  ![Level5](./img/level_5.png)
+</details>
+<details>
+  <summary> Nivel <c>6</c> </summary>
+
+  ![Level6](./img/level_6.png)
 </details>
 
 
