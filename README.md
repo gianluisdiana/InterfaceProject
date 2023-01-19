@@ -14,11 +14,15 @@ Actualmente tenemos implementado 3 comandos:
 - `THROW`: Lanza el objeto en posesión en la dirección que apuntamos.
 
 ## Hitos de programación logrados relacionándolos con los contenidos que se han impartido.
+Hemos utilizado una gran variedad de scripts en la realización de este proyecto. Empezando por los contenidos más básicos movemos objetos de la escena, tanto con el uso de fuerza (cuando los objetos tienen `Rigidbody`), como haciendo 'mini tele-transportes', modificando sus coordenadas directas; modificamos de forma dinámica el material de objetos (ilustrando cuales objetos se pueden agarrar). Destruimos objetos cuando están en zonas indeseables. De los tópicos más complicados de entender (no tanto por su complejidad, sino por su abstracción), los 'notifiers' y 'subscribers' fueron implementados reiteradamente según se vió oportuno.
+
+Fuera de los contenidos de la asignatura, nos parece relevante destacar el uso de funcionalidades ofrecidas por _Unity_, tales como `SceneManagement`, `Tooltip`, `SerializeField`, llamadas a co-rutinas para ejecutar varias funciones a la vez.
 
 ## Aspectos que destacarías en la aplicación. Especificar si se han incluido sensores de los que se han trabajado en interfaces multi-modales.
 
-### Restricciones:
-  - Altura máxima de paredes: 4
+En un inicio, teníamos planeado utilizar un reconocedor de voz, de forma que no hubiera hecho falta el mando para interactuar con la aplicación, de hecho, teníamos implementado los códigos necesarios y funcionales para windows pero nos encontramos con la dificultad de que la librería implementada en _Unity_ era solo para aplicaciones de pc (y no para Android o iOS), por lo que tuvimos que buscar alternativas pero no llegamos a ninguna que pudiéramos utilizar.
+
+Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
 
 ### Niveles implementados:
 1. Sencillo, con la canasta y el cubo en el piso (estáticos) y enseña a como usar la aplicación.
@@ -65,6 +69,10 @@ Actualmente tenemos implementado 3 comandos:
 
 ![LightFollow](./img/light_follow.png)
 
+### Transición entre niveles
+
+![LevelTransactions](./img/level_transactions)
+
 ## Acta de los acuerdos del grupo respecto al trabajo en equipo: reparto de tareas, tareas desarrolladas individualmente, tareas desarrolladas en grupo, etc.
 
 - Codificación de scripts:
@@ -81,4 +89,4 @@ Actualmente tenemos implementado 3 comandos:
   - `WinDetection`: Jorge
 
 - Desarrollo de escenas: Grupal (Marta y Jorge en general)
-- Búsqueda y ideas y assets: Grupal (Marta y Jorge en general)
+- Búsqueda de ideas y assets: Grupal
