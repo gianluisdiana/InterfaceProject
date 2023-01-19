@@ -19,10 +19,14 @@ public class PickUpScript : MonoBehaviour {
 
     // ------------------------- Private attributes ------------------------- //
 
-    private GameObject heldObj;  // Object which we pick up
-    private Rigidbody heldObjRb; // Rigidbody of object we pick up
+    /// <value> Object which we pick up. </value>
+    private GameObject _heldObj;
 
-    private int LayerNumber;     // Layer index
+    /// <value> Rigidbody of object we pick up.  </value>
+    private Rigidbody _heldObjRb;
+
+    /// <value> Layer index </value>
+    private int _layerNumber;
 
     // ------------------------------ Notifier ------------------------------ //
 
@@ -52,13 +56,13 @@ public class PickUpScript : MonoBehaviour {
     private void PickUpObject (GameObject pickUpObj) {
         if (!(pickUpObj.GetComponent<Rigidbody>())) return; // Make sure the object has a RigidBody
 
-        heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
-        heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
-        heldObjRb.isKinematic = true;
-        heldObjRb.transform.parent = holdPosition.transform; //parent object to hold position
-        heldObj.layer = LayerNumber; //change the object layer to the holdLayer
+        _heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
+        _heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
+        _heldObjRb.isKinematic = true;
+        _heldObjRb.transform.parent = holdPosition.transform; //parent object to hold position
+        _heldObj.layer = _layerNumber; //change the object layer to the holdLayer
         //make sure object doesnt collide with player, it can cause weird bugs
-        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        Physics.IgnoreCollision(_heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         OnGrab();
     }
 
@@ -81,7 +85,7 @@ public class PickUpScript : MonoBehaviour {
         /// Only called when dropping / throwing.
     /// </summary>
     private void StopClipping() {
-        var clipRange = Vector3.Distance(heldObj.transform.position, transform.position); // Distance from "holdPosition" to the camera
+        var clipRange = Vector3.Distance(_heldObj.transform.position, transform.position); // Distance from "holdPosition" to the camera
         //have to use RaycastAll as object blocks ray-cast in center screen
         //RaycastAll returns array of all colliders hit within the clip-range
         RaycastHit[] hits;
@@ -89,7 +93,7 @@ public class PickUpScript : MonoBehaviour {
         //if the array length is greater than 1, meaning it has hit more than just the object we are carrying
         if (hits.Length > 1) {
             //change object position to camera position
-            heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //offset slightly downward to stop object dropping above player 
+            _heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //offset slightly downward to stop object dropping above player 
             //if your player is small, change the -0.5f to a smaller number (in magnitude) ie: -0.1f
         }
     }
@@ -98,15 +102,15 @@ public class PickUpScript : MonoBehaviour {
         /// Drop the object and make it fall to the ground
     /// </summary>
     private void DropObject () {
-        if (heldObj == null) return;
+        if (_heldObj == null) return;
         StopClipping(); // Prevents object from clipping through walls
 
         // Re-enable collision with player
-        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.layer = 0; // Object assigned back to default layer
-        heldObjRb.isKinematic = false;
-        heldObj.transform.parent = null; // Un-parent object
-        heldObj = null; // Undefine game object attached to heldObj
+        Physics.IgnoreCollision(_heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        _heldObj.layer = 0; // Object assigned back to default layer
+        _heldObjRb.isKinematic = false;
+        _heldObj.transform.parent = null; // Un-parent object
+        _heldObj = null; // Undefine game object attached to _heldObj
         OnDrop();
     }
 
@@ -114,20 +118,20 @@ public class PickUpScript : MonoBehaviour {
         /// Same as drop function, but add force to object before undefining it
     /// </summary>
     private void ThrowObject() {
-        if (heldObj == null) return;
+        if (_heldObj == null) return;
 
         float actualThrowForce = throwForce;
-        actualThrowForce *= (heldObj.name == "Ball" ? 1.5f : 1);
+        actualThrowForce *= (_heldObj.name == "Ball" ? 1.5f : 1);
 
         DropObject();
-        heldObjRb.AddForce(transform.forward * actualThrowForce);
+        _heldObjRb.AddForce(transform.forward * actualThrowForce);
     }
 
     /// <summary>
         /// Keep the object position the same as the holdPosition position
     /// </summary>
     private void MoveObject () {
-        heldObj.transform.position = holdPosition.transform.position;
+        _heldObj.transform.position = holdPosition.transform.position;
     }
 
 # endregion
@@ -138,7 +142,7 @@ public class PickUpScript : MonoBehaviour {
         /// Set the functions to be called when a certain button is pressed.
     /// </summary>
     private void Start () {
-        LayerNumber = LayerMask.NameToLayer("holdLayer");
+        _layerNumber = LayerMask.NameToLayer("holdLayer");
         userNotifier.OnGPressed += TryToPickUpObject;
         userNotifier.OnDPressed += DropObject;
         userNotifier.OnTPressed += ThrowObject;
@@ -148,7 +152,7 @@ public class PickUpScript : MonoBehaviour {
         /// If the user is holding an object, keep moving it with that user.
     /// </summary>
     private void Update() {
-        if (heldObj == null) return;
+        if (_heldObj == null) return;
         MoveObject(); // Keep the object position at 'holdPosition'
     }
 }

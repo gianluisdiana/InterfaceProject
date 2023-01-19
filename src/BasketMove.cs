@@ -6,7 +6,7 @@ public class BasketMove : MonoBehaviour {
     // ------------------------- Private attributes ------------------------- //
 
     /// <value> To check if the basket has to be moved to the right or not. </value>
-    private bool goRight;
+    private bool _goRight;
 
     /// <value> Starting position of the basket. </value>
     private Vector3 _leftEdgePosition;
@@ -15,7 +15,7 @@ public class BasketMove : MonoBehaviour {
     private Vector3 _rightEdgePosition;
 
     /// <value> The speed of the basket. </value>
-    private float basketSpeed;
+    private float _basketSpeed;
 
     // ----------------------------- Private Method ---------------------------- //
 
@@ -34,10 +34,10 @@ public class BasketMove : MonoBehaviour {
         /// Set the edges positions and the speed of the basket.
     /// </summary>
     private void Start() {
-        goRight = true;
+        _goRight = true;
         _leftEdgePosition = new Vector3(-3.5f, 0, 2);
         _rightEdgePosition = new Vector3(_leftEdgePosition.x + 4, _leftEdgePosition.y, _leftEdgePosition.z);
-        basketSpeed = 0.003f;
+        _basketSpeed = 0.003f;
     }
 
     /// <summary>
@@ -46,9 +46,9 @@ public class BasketMove : MonoBehaviour {
     void Update() {
         float currentXPosition = transform.position.x;
 
-        if (!isInXRange(currentXPosition)) goRight = !goRight;
+        if (!isInXRange(currentXPosition)) _goRight = !_goRight;
 
-        float finalSpeed = basketSpeed * (goRight ? 1 : -1);
+        float finalSpeed = _basketSpeed * (_goRight ? 1 : -1);
         transform.Translate(Vector3.right * finalSpeed);
     }
 }

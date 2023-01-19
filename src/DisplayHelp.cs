@@ -19,19 +19,19 @@ public class DisplayHelp : MonoBehaviour {
   // ------------------------- Private attributes ------------------------- //
 
   /// <value> String with help on how to grab an object. </value>
-  private string pickHelp = "Press 'G' to pick up an object";
+  private string _pickHelp = "Press 'G' to pick up an object";
 
   /// <value> Keeps track if the pick help was already displayed. </value>
-  private bool pickHelpAlreadyDisplayed = false;
+  private bool _pickHelpAlreadyDisplayed = false;
 
   /// <value> String with help on how to throw an object. </value>
-  private string throwHelp = "Press 'T' to throw the object.";
+  private string _throwHelp = "Press 'T' to throw the object.";
 
   /// <value> String with help on how to drop an object. </value>
-  private string dropHelp = "Press 'R' to drop the object.";
+  private string _dropHelp = "Press 'R' to drop the object.";
 
   /// <value> Keeps track if the 'drop and throw' help was already displayed.</value>
-  private bool dropThrowHelpAlreadyDisplayed = false;
+  private bool _dropThrowHelpAlreadyDisplayed = false;
 
   // -------------------------- Private Methods --------------------------- //
 
@@ -40,16 +40,16 @@ public class DisplayHelp : MonoBehaviour {
   /// </summary>
   IEnumerator displayPickHelp() {
     // Only display it once
-    if (this.pickHelpAlreadyDisplayed) yield break;
+    if (_pickHelpAlreadyDisplayed) yield break;
 
-    this.pickHelpAlreadyDisplayed = true;
+    _pickHelpAlreadyDisplayed = true;
     // If there's any text, wait till it disappears
-    while (this.commonHelpText.text != "") yield return new WaitForSeconds(0.5f);
+    while (commonHelpText.text != "") yield return new WaitForSeconds(0.5f);
 
-    this.commonHelpText.text = this.pickHelp;
+    commonHelpText.text = _pickHelp;
     // Keep the text 5 seconds
     yield return new WaitForSeconds(5f);
-    this.commonHelpText.text = "";
+    commonHelpText.text = "";
   }
 
   /// <summary>
@@ -57,16 +57,16 @@ public class DisplayHelp : MonoBehaviour {
   /// </summary>
   IEnumerator displayDropThrowHelp() {
     // Only display it once
-    if (this.dropThrowHelpAlreadyDisplayed) yield break;
+    if (_dropThrowHelpAlreadyDisplayed) yield break;
 
-    this.dropThrowHelpAlreadyDisplayed = true;
+    _dropThrowHelpAlreadyDisplayed = true;
     // If there's any text, wait till it disappears
-    while (this.commonHelpText.text != "") yield return new WaitForSeconds(0.5f);
+    while (commonHelpText.text != "") yield return new WaitForSeconds(0.5f);
 
-    this.commonHelpText.text = this.dropHelp + "\n" + this.throwHelp;
+    commonHelpText.text = _dropHelp + "\n" + _throwHelp;
     // Keep the text 5 seconds
     yield return new WaitForSeconds(5f);
-    this.commonHelpText.text = "";
+    commonHelpText.text = "";
   }
 
   private void displayPick() {
@@ -83,7 +83,7 @@ public class DisplayHelp : MonoBehaviour {
     /// Set the functions to be called when an object is grabbed / highlight.
   /// </summary>
   private void Start() {
-    this.selectionNotifier.OnHighlight += displayPick;
-    this.pickNotifier.OnGrab += displayDropThrow;
+    selectionNotifier.OnHighlight += displayPick;
+    pickNotifier.OnGrab += displayDropThrow;
   }
 }

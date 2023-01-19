@@ -13,70 +13,70 @@ public class Platform_Move : MonoBehaviour {
 
     // ------------------------- Private attributes ------------------------- //
 
-    /// <value> To check if the platform has to be moved forward or not.  </value>
-    private bool goForward;
+    /// <value> To check if the platform has to be moved forward or not. </value>
+    private bool _goForward;
 
     /// <value> To check if the platform has to be moved to the left or not. </value>
-    private bool goLeft;
+    private bool _goLeft;
 
     /// <value> To check if the platform has reached its final position. </value>
-    private bool finalPos;
+    private bool _finalPos;
 
-    /// <value> Get the box object </value>
-    private GameObject box;
+    /// <value> Get the box object. </value>
+    private GameObject _box;
 
-    /// <value> Inicial position of the platform </value>
-    private Vector3 initialPosition;
+    /// <value> Inicial position of the platform. </value>
+    private Vector3 _initialPosition;
 
-    /// <value> Position of the platform once it has gone forward </value>
-    private Vector3 frontPosition;
+    /// <value> Position of the platform once it has gone forward. </value>
+    private Vector3 _frontPosition;
 
-    /// <value> Last position of the platform (after going left) </value>
-    private Vector3 finalPosition;
+    /// <value> Last position of the platform (after going left). </value>
+    private Vector3 _finalPosition;
 
     // ---------------------------- Private Method --------------------------- //
 
     /// <summary>
-        /// Code of the movement of the platform. First it goes forward, then left till the final position.
+        /// Move the platform. First it goes forward, then left till the final position.
     /// </summary>
     void move() {
         Vector3 currentPosition = transform.position;
 
-        if (finalPos) return;
+        if (_finalPos) return;
 
-        if (goForward) {
-            if (currentPosition.z < frontPosition.z) {
+        if (_goForward) {
+            if (currentPosition.z < _frontPosition.z) {
                 transform.Translate(Vector3.forward * 0.01f);
             } else {
-                goForward = false;
-                goLeft = true;
+                _goForward = false;
+                _goLeft = true;
             }
-        } else if (goLeft) {
-            if (currentPosition.x > finalPosition.x) {
+        } else if (_goLeft) {
+            if (currentPosition.x > _finalPosition.x) {
                 transform.Translate(Vector3.left * 0.01f);
             } else {
-                goLeft = false;
+                _goLeft = false;
             }
         } else {
             transform.Rotate(0, 0, 90);
-            finalPos = true;
+            _finalPos = true;
         }
     }
 
     // ----------------------------- Unity methods ----------------------------- //
 
     /// <summary>
-        /// Initialises the private attributes
+        /// Initializes the private attributes
     /// </summary>
     void Start() {
-        goForward = true;
-        goLeft = false;
-        finalPos = false;
-        box = GameObject.FindWithTag("canPickUp");
+        _goForward = true;
+        _goLeft = false;
+        _finalPos = false;
+        _box = GameObject.FindWithTag("canPickUp");
 
-        initialPosition =  = new Vector3(-1, 1.2f, -2.75f);
-        frontPosition = new Vector3(initialPosition.x, initialPosition.y, initialPosition.z + 5.5f);
-        finalPosition = new Vector3(initialPosition.x - 2, initialPosition.y, initialPosition.z);
+        _initialPosition =  = new Vector3(-1, 1.2f, -2.75f);
+        _frontPosition = new Vector3(_initialPosition.x, _initialPosition.y, _initialPosition.z + 5.5f);
+        _finalPosition = new Vector3(_initialPosition.x - 2, _initialPosition.y, _initialPosition.z);
     }
 
     /// <summary>
@@ -84,8 +84,8 @@ public class Platform_Move : MonoBehaviour {
     /// </summary>
     /// <param name="collision"> The object that collided with. </param>
     void OnCollisionStay(Collision collision) {
-        if (collision.gameObject.tag != box.tag) return;
-        box.transform.SetParent(parent);
+        if (collision.gameObject.tag != _box.tag) return;
+        _box.transform.SetParent(parent);
         move();
     }
 
@@ -93,9 +93,9 @@ public class Platform_Move : MonoBehaviour {
         /// If the object is not longer colliding, the platform goes to its inicial position.
     /// </summary>
     void OnCollisionExit() {
-        box.transform.SetParent(oldParent);
-        transform.position = initialPosition;
-        goForward = true;
-        goLeft = false;
+        _box.transform.SetParent(oldParent);
+        transform.position = _initialPosition;
+        _goForward = true;
+        _goLeft = false;
     }
 }

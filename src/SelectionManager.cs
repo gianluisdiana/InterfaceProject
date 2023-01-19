@@ -33,10 +33,10 @@ public class SelectionManager : MonoBehaviour {
     // ------------------------- Private attributes ------------------------- //
 
     /// <value> Whether an object is currently <c>grabbed</c>. </value>
-    private bool grabbed;
+    private bool _grabbed;
 
     /// <value> The object that is currently <c>selected</c>. </value>
-    private Transform objectInVision;
+    private Transform _objectInVision;
 
     // --------------------------- Private methods --------------------------- //
 
@@ -44,14 +44,14 @@ public class SelectionManager : MonoBehaviour {
         /// Set the object state 'grabbed' to true.
     /// </summary>
     private void objectGrabbed() {
-        grabbed = true;
+        _grabbed = true;
     }
 
     /// <summary>
         /// Set the object state 'grabbed' to false.
     /// </summary>
     private void objectNotGrabbed() {
-        grabbed = false;
+        _grabbed = false;
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class SelectionManager : MonoBehaviour {
     /// <param name="highlight"> Whether the material should be highlighted or not. </param>
     /// <returns> The material that corresponds to the object's name. </returns>
     private Material GetMaterial(string name, bool highlight) {
-        foreach (Materials objMat in this.materials) {
+        foreach (Materials objMat in materials) {
             if (objMat.name == name) {
                 return highlight ? objMat.highlightMaterial : objMat.defaultMaterial;
             }
@@ -72,10 +72,10 @@ public class SelectionManager : MonoBehaviour {
     // ----------------------------- Unity methods ----------------------------- //
 
     private void Update() {
-        if (objectInVision != null) {
-            Renderer selectionRenderer = objectInVision.GetComponent<Renderer>();
-            selectionRenderer.material = GetMaterial(objectInVision.name, false);
-            objectInVision = null;
+        if (_objectInVision != null) {
+            Renderer selectionRenderer = _objectInVision.GetComponent<Renderer>();
+            selectionRenderer.material = GetMaterial(_objectInVision.name, false);
+            _objectInVision = null;
         }
 
         RaycastHit hit;
@@ -89,18 +89,18 @@ public class SelectionManager : MonoBehaviour {
 
         Renderer selectedRenderer = newObjectInVision.GetComponent<Renderer>();
         // If the user is holding the object, do not highlight it.
-        if ((selectedRenderer == null) || (grabbed)) return;
+        if ((selectedRenderer == null) || (_grabbed)) return;
 
         selectedRenderer.material = GetMaterial(newObjectInVision.name, true);
         if (SceneManager.GetActiveScene().name == "Level_0") OnHighlight();
-        objectInVision = newObjectInVision;
+        _objectInVision = newObjectInVision;
     }
 
     /// <summary>
         /// Set the functions to be called when an object is grabbed / dropped.
     /// </summary>
     private void Start() {
-        grabbed = false;
+        _grabbed = false;
         notifier.OnGrab += objectGrabbed;
         notifier.OnDrop += objectNotGrabbed;
     }

@@ -50,19 +50,5 @@ public class Box_Vertical : MonoBehaviour {
 
         float finalSpeed = _boxSpeed * (_goUp ? 1 : -1);
         transform.Translate(Vector3.up * finalSpeed);
-
-//        if (_goUp) {
-//            if (currentYPosition < _topEdgePosition.y) {
-//                transform.Translate(Vector3.up * _boxSpeed);
-//            } else {
-//                _goUp = false;
-//            }
-//        } else {
-//            if (currentYPosition.y > _downEdgePosition.y) {
-//                transform.Translate(Vector3.down * _boxSpeed);
-//            } else {
-//                _goUp = true;
-//            }
-//        }
     }
 }
