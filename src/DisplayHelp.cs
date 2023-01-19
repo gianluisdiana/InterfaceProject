@@ -19,16 +19,16 @@ public class DisplayHelp : MonoBehaviour {
   // ------------------------- Private attributes ------------------------- //
 
   /// <value> String with help on how to grab an object. </value>
-  private string _pickHelp = "Press 'G' to pick up an object";
+  private string _pickHelp = "Press 'O' to pick up an object";
 
   /// <value> Keeps track if the pick help was already displayed. </value>
   private bool _pickHelpAlreadyDisplayed = false;
 
   /// <value> String with help on how to throw an object. </value>
-  private string _throwHelp = "Press 'T' to throw the object.";
+  private string _throwHelp = "Press 'X' to throw the object.";
 
   /// <value> String with help on how to drop an object. </value>
-  private string _dropHelp = "Press 'R' to drop the object.";
+  private string _dropHelp = "Press '■' to drop the object.";
 
   /// <value> Keeps track if the 'drop and throw' help was already displayed.</value>
   private bool _dropThrowHelpAlreadyDisplayed = false;

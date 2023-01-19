@@ -35,9 +35,9 @@ public class Box_Vertical : MonoBehaviour {
     /// </summary>
     void Start() {
         _goUp = true;
-        _downEdgePosition = new Vector3(0.8f, 1.35f, 1);
+        _downEdgePosition = new Vector3(4.46f, 0.06f, 2.76f);
         _topEdgePosition = new Vector3(_downEdgePosition.x, _downEdgePosition.y + 2, _downEdgePosition.z);
-        _boxSpeed = 0.01f;
+        _boxSpeed = 0.03f;
     }
 
     /// <summary>

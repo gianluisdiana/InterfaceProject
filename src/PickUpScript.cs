@@ -22,10 +22,10 @@ public class PickUpScript : MonoBehaviour {
     /// <value> Object which we pick up. </value>
     private GameObject _heldObj;
 
-    /// <value> Rigidbody of object we pick up.  </value>
+    /// <value> Rigidbody of object we pick up. </value>
     private Rigidbody _heldObjRb;
 
-    /// <value> Layer index </value>
+    /// <value> Layer index. </value>
     private int _layerNumber;
 
     // ------------------------------ Notifier ------------------------------ //
@@ -56,7 +56,7 @@ public class PickUpScript : MonoBehaviour {
     private void PickUpObject (GameObject pickUpObj) {
         if (!(pickUpObj.GetComponent<Rigidbody>())) return; // Make sure the object has a RigidBody
 
-        _heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
+        _heldObj = pickUpObj; //assign heldObj to the object that was hit by the ray-cast (no longer == null)
         _heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
         _heldObjRb.isKinematic = true;
         _heldObjRb.transform.parent = holdPosition.transform; //parent object to hold position
@@ -143,9 +143,9 @@ public class PickUpScript : MonoBehaviour {
     /// </summary>
     private void Start () {
         _layerNumber = LayerMask.NameToLayer("holdLayer");
-        userNotifier.OnGPressed += TryToPickUpObject;
-        userNotifier.OnDPressed += DropObject;
-        userNotifier.OnTPressed += ThrowObject;
+        userNotifier.OnCirclePressed += TryToPickUpObject;
+        userNotifier.OnSquarePressed += DropObject;
+        userNotifier.OnXPressed += ThrowObject;
     }
 
     /// <summary>

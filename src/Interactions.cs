@@ -11,25 +11,22 @@ public class Interactions : MonoBehaviour {
     /// <summary>
         /// Events that will be triggered when a certain button was pressed.
     /// </summary>
-    public event ButtonPressed OnGPressed;
-    public event ButtonPressed OnDPressed;
-    public event ButtonPressed OnTPressed;
-    public event ButtonPressed OnSpaceBarPressed;
+    public event ButtonPressed OnCirclePressed;
+    public event ButtonPressed OnSquarePressed;
+    public event ButtonPressed OnXPressed;
 
     // --------------------------- Unity methods --------------------------- //
 
     /// <summary>
-        /// Checks if any of the buttons was pressed.
+        /// Checks if any of the ps4 buttons was pressed.
     /// </summary>
     private void Update () {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            OnSpaceBarPressed();
-        } else if (Input.GetKeyDown(KeyCode.G)) {
-            OnGPressed();
-        } else if (Input.GetKeyDown(KeyCode.D)) {
-            OnDPressed();
-        } else if (Input.GetKeyDown(KeyCode.T)) {
-            OnTPressed();
+        if (Input.GetButton("PS4-Crl")) {
+            OnCirclePressed();
+        } else if (Input.GetButton("PS4-Sqr")) {
+            OnSquarePressed();
+        } else if (Input.GetButton("PS4-X")) {
+            OnXPressed();
         }
     }
 }
