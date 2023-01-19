@@ -39,61 +39,61 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
   <summary> Nivel <c>1</c> </summary>
   Puesto que es el primer nivel, también es el más básico de todos. El objetivo del mismo es que el usuario se familiarice con los objetos de la escena y como puede interactuar con ellos.
 
-  ![Level1](https://user-images.githubusercontent.com/72491269/213371736-b8b675e2-fc1b-48f6-bf7f-7e9e9d30c3e5.gif)
+  ![Level1](./img/Level1.gif)
 </details>
 <details>
   <summary> Nivel <c>2</c> </summary>
   El siguiente nivel tiene un poco más de dificultad, puesto que la caja se encuentra en una plataforma movible que se eleva y se baja. Se busca incrementar en pequeñas medidas cada nivel, y la primera aproximación es esta.
 
-  ![Level2](https://user-images.githubusercontent.com/72491269/213372761-d449d0dd-892d-45bc-9b61-4241f33c5681.gif)
+  ![Level2](./img/Level2.gif)
 </details>
 <details>
   <summary> Nivel <c>3</c> </summary>
   Este en particular es para que el usuario practique su lanzamiento, puesto que la plataforma donde se sitúa la canasta esta en un piso mas elevado que el usuario.
 
-  ![Level3](https://user-images.githubusercontent.com/72491269/213371827-d9be25e5-7c43-4b5d-83e2-67563944ddf4.gif)
+  ![Level3](./img/Level3.gif)
 </details>
 <details>
   <summary> Nivel <c>4</c> </summary>
   En este nivel jugamos con la posición de la canasta, de manera que en ciertos puntos es visible y en otros no. En todo momento el usuario tiene la capacidad de encestar la caja, pero es mucho mas fácil cuando se tiene visión de la canasta
 
-  ![Level4](https://user-images.githubusercontent.com/72491269/213371859-5a0caf4d-506e-4642-95f0-ab1759c9f899.gif)
+  ![Level4](./img/Level4.gif)
 </details>
 <details>
   <summary> Nivel <c>5</c> </summary>
   Aquí introducimos una mecánica nueva: la pared endeble. Se nos dispone de proyectiles (aparte de la caja en si) para lanzar a esta pared demoliéndola gradualmente, y asi tener visión de la canasta.
-  
+
   Observamos la forma de demoler la pared:
-  
-  ![Level5_1](https://user-images.githubusercontent.com/72491269/213373333-49d7897c-de18-4ae9-b993-bbf8a2fe581b.gif)
-  
+
+  ![Level5_1](./img/Level5_1.gif)
+
   Y completamos el nivel:
 
-  ![Level5_2](https://user-images.githubusercontent.com/72491269/213371933-ca540125-557c-44a1-b128-0e007523aa23.gif)
+  ![Level5_2](./img/Level5_2.gif)
 </details>
 <details>
   <summary> Nivel <c>6</c> </summary>
   En el último nivel tenemos una plataforma que al sostener la caja (soltar la caja encima) comienza su recorrido.
-  
-  ![Level6_1](https://user-images.githubusercontent.com/72491269/213371984-74bc82d6-7913-4955-8961-83f2079ac34b.gif)
-  
+
+  ![Level6_1](./img/Level6_1.gif)
+
   En este camino encontramos una pared derribable con las esferas dispuestas para ello. También se puede demoler por la repetida colisión de la plataforma móvil.
-  
-  ![Level6_2](https://user-images.githubusercontent.com/72491269/213372792-824566d1-64f4-429c-a2e3-bda85d476f93.gif)
-  
+
+  ![Level6_2](./img/Level6_2.gif)
+
   Para completar el nivel debemos hacer que la plataforma termine su recorrido sin ser obstaculizada.
 
-  ![Level6_3](https://user-images.githubusercontent.com/72491269/213372050-52a782ce-5a86-4008-8077-68b67c7af22d.gif)
+  ![Level6_3](./img/Level6_3.gif)
 </details>
 
 
 ### Ayuda mostrada en el primer nivel.
 
-![Captura1](https://user-images.githubusercontent.com/72491269/213374251-f9993727-14c5-4fa7-88e7-54e9530aec26.PNG)
+![Captura1](./img/Captura1.PNG)
 
 ### Seguimiento de farola a canasta
 
-![Level4_Luz](https://user-images.githubusercontent.com/72491269/213374353-39d15f01-0973-4af8-bb06-f9a4b0c9f8b7.gif)
+![Level4_Luz](./img/Level4_Luz.gif)
 
 ## Acta de los acuerdos del grupo respecto al trabajo en equipo: reparto de tareas, tareas desarrolladas individualmente, tareas desarrolladas en grupo, etc.
 
