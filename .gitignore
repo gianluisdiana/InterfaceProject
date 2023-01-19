@@ -1,0 +1,12 @@
+# Editor settings
+.vscode
+
+# Unity folders
+ExternalAssets
+Plugins
+Samples
+Scenes
+XR
+
+# Unity generated meta files
+*.meta
