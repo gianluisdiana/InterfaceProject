@@ -45,7 +45,7 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
   <summary> Nivel <c>2</c> </summary>
   El siguiente nivel tiene un poco más de dificultad, puesto que la caja se encuentra en una plataforma movible que se eleva y se baja. Se busca incrementar en pequeñas medidas cada nivel, y la primera aproximación es esta.
 
-  ![Level2](./img/level_2.gif)
+  ![Level2](https://user-images.githubusercontent.com/72491269/213372761-d449d0dd-892d-45bc-9b61-4241f33c5681.gif)
 </details>
 <details>
   <summary> Nivel <c>3</c> </summary>
@@ -79,7 +79,7 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
   
   En este camino encontramos una pared derribable con las esferas dispuestas para ello. También se puede demoler por la repetida colisión de la plataforma móvil.
   
-  ![Level6_pared](./img/level_6_pared.gif)
+  ![Level6_2](https://user-images.githubusercontent.com/72491269/213372792-824566d1-64f4-429c-a2e3-bda85d476f93.gif)
   
   Para completar el nivel debemos hacer que la plataforma termine su recorrido sin ser obstaculizada.
 
