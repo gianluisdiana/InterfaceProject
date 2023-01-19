@@ -39,7 +39,7 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
   <summary> Nivel <c>1</c> </summary>
   Puesto que es el primer nivel, también es el más básico de todos. El objetivo del mismo es que el usuario se familiarice con los objetos de la escena y como puede interactuar con ellos.
 
-  ![Level1](./img/level_1.gif)
+  ![Level1](https://user-images.githubusercontent.com/72491269/213371736-b8b675e2-fc1b-48f6-bf7f-7e9e9d30c3e5.gif)
 </details>
 <details>
   <summary> Nivel <c>2</c> </summary>
@@ -51,13 +51,13 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
   <summary> Nivel <c>3</c> </summary>
   Este en particular es para que el usuario practique su lanzamiento, puesto que la plataforma donde se sitúa la canasta esta en un piso mas elevado que el usuario.
 
-  ![Level3](./img/level_3.gif)
+  ![Level3](https://user-images.githubusercontent.com/72491269/213371827-d9be25e5-7c43-4b5d-83e2-67563944ddf4.gif)
 </details>
 <details>
   <summary> Nivel <c>4</c> </summary>
   En este nivel jugamos con la posición de la canasta, de manera que en ciertos puntos es visible y en otros no. En todo momento el usuario tiene la capacidad de encestar la caja, pero es mucho mas fácil cuando se tiene visión de la canasta
 
-  ![Level4](./img/level_4.gif)
+  ![Level4](https://user-images.githubusercontent.com/72491269/213371859-5a0caf4d-506e-4642-95f0-ab1759c9f899.gif)
 </details>
 <details>
   <summary> Nivel <c>5</c> </summary>
@@ -69,13 +69,13 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
   
   Y completamos el nivel:
 
-  ![Level5](./img/level_5.gif)
+  ![Level5_2](https://user-images.githubusercontent.com/72491269/213371933-ca540125-557c-44a1-b128-0e007523aa23.gif)
 </details>
 <details>
   <summary> Nivel <c>6</c> </summary>
   En el último nivel tenemos una plataforma que al sostener la caja (soltar la caja encima) comienza su recorrido.
   
-  ![Level6_recorrido](./img/level_6_recorrido.gif)
+  ![Level6_1](https://user-images.githubusercontent.com/72491269/213371984-74bc82d6-7913-4955-8961-83f2079ac34b.gif)
   
   En este camino encontramos una pared derribable con las esferas dispuestas para ello. También se puede demoler por la repetida colisión de la plataforma móvil.
   
@@ -83,7 +83,7 @@ Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
   
   Para completar el nivel debemos hacer que la plataforma termine su recorrido sin ser obstaculizada.
 
-  ![Level6](./img/level_6.gif)
+  ![Level6_3](https://user-images.githubusercontent.com/72491269/213372050-52a782ce-5a86-4008-8077-68b67c7af22d.gif)
 </details>
 
 
