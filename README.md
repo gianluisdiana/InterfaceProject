@@ -22,7 +22,7 @@ Fuera de los contenidos de la asignatura, nos parece relevante destacar el uso d
 
 En un inicio, teníamos planeado utilizar un reconocedor de voz, de forma que no hubiera hecho falta el mando para interactuar con la aplicación, de hecho, teníamos implementado los códigos necesarios y funcionales para windows pero nos encontramos con la dificultad de que la librería implementada en _Unity_ era solo para aplicaciones de pc (y no para Android o iOS), por lo que tuvimos que buscar alternativas pero no llegamos a ninguna que pudiéramos utilizar.
 
-Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal.
+Aparte de lo mencionado, no se incorporó ninguna interfaz multi-modal pero si cabría mencionar el uso de aspectos como podrían ser la música o información para que el usuario entienda aspectos como que objetos son interactuables, como interactuar con ellos o simplemente donde esta de manera exacta el centro de la pantalla.
 
 ### Niveles implementados:
 1. Sencillo, con la canasta y el cubo en el piso (estáticos) y enseña a como usar la aplicación.
